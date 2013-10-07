@@ -1,0 +1,71 @@
+# Graphics
+lib/egl/libEGL_MRVL.so
+lib/egl/libGLESv1_CM_MRVL.so
+lib/egl/libGLESv2_MRVL.so
+lib/libGAL.so
+
+# Audio
+lib/hw/audio.primary.mrvl.so
+lib/hw/audio_path.adda.mrvl.so
+lib/hw/audio_path.fm.mrvl.so
+lib/hw/audio_path.hifi.mrvl.so
+lib/hw/audio_path.vc.mrvl.so
+lib/hw/audio_path.voip.mrvl.so
+lib/hw/audio_path.vt.mrvl.so
+lib/hw/audio_policy.mrvl.so
+# TODO import alsa-lib from source
+lib/libacoustic.so
+lib/libasound.so
+lib/libaudiodebugtool.so
+lib/liblvvewrapper.so
+lib/libMarvellWireless.so
+lib/libsamsungRecord.so
+lib/libsamsungSoundbooster.so
+lib/lib_Samsung_Resampler.so
+
+
+
+# Camera
+lib/hw/camera.mrvl.so
+lib/libcameraengine.so
+lib/libcodecjpegdec.so
+lib/libcodecjpegenc.so
+lib/libmiscgen.so
+lib/libphycontmem.so
+lib/libsecnativefeature.so
+lib/libsocketsvr.so
+
+# Sensors
+lib/hw/sensors.mrvl.so
+
+# GPS
+lib/hw/gps.default.so
+etc/AGPS_CA.pem
+
+# Unknown
+lib/hw/csr.cpd.so
+#Needed Library 'libutils.so'
+#Needed Library 'liblog.so'
+#Needed Library 'libcutils.so'
+#Needed Library 'libdl.so'
+#Needed Library 'libc.so'
+#Needed Library 'libstdc++.so'
+#Needed Library 'libm.so'
+#Shared Name 'csr.cpd.so'
+
+
+# Marvell Firmware
+
+
+# Display
+lib/hw/lights.mrvl.so
+lib/hw/gralloc.mrvl.so
+lib/hw/hwcomposer.mrvl.so
+lib/libHWComposerGC.so
+lib/libgcu.so
+
+# NFC
+lib/hw/nfc.pxa988.so
+vendor/firmware/libpn547_fw.so
+vendor/firmware/libpn547_fw_eng.so
+vendor/firmware/libpn547_fw_platform.so
