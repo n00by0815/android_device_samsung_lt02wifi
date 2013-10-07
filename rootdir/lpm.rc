@@ -1,0 +1,83 @@
+on early-init
+    start ueventd
+    write /sys/class/power_supply/battery/batt_lp_charging 1
+
+on init
+
+    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
+    export LD_LIBRARY_PATH /vendor/lib:/system/lib
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+    export EXTERNAL_STORAGE /sdcard
+
+    symlink /system/etc /etc
+
+    mkdir /sdcard
+    mkdir /preload
+    mkdir /system
+    mkdir /data
+    mkdir /cache
+    mkdir /efs
+    mkdir /tmp
+    mkdir /dbdata
+    mkdir /mnt 0775 root root
+    #mount /tmp /tmp tmpfs   
+
+    # J4FS(lfs) mount points.
+    #mkdir /mnt/.lfs 0755 root root
+
+on early-fs
+	insmod /lib/modules/vibrator.ko
+ 
+    mount ext4 /dev/block/mmcblk0p14 /system ro wait noatime
+
+	mkdir /data/log 0777
+
+	chmod 0666 /dev/log/radio
+	chmod 0666 /dev/log/main
+	chmod 0666 /dev/log/event    
+
+on boot
+
+	class_start default
+
+service debuggerd /system/bin/debuggerd
+
+	service ueventd /sbin/ueventd
+    	critical
+
+on post-fs
+    # Install Kernel Module
+    #insmod /system/lib/modules/j4fs.ko
+    # We need to decide j4fs's partition number(mmcblk0pX)
+    #mount j4fs /dev/block/mmcblk0p7 /mnt/.lfs wait
+
+    #insmod /system/lib/modules/param.ko
+
+#service console /bin/sh
+service console /system/bin/sh
+	console
+
+service playlpm /system/bin/playlpm
+    	user root
+
+service immvibed /system/bin/immvibed 
+	oneshot
+
+service lpmkey /system/bin/lpmkey
+    	user root
+
+# adbd is controlled by the persist.service.adb.enable system property
+service adbd /sbin/adbd
+    disabled
+
+# adbd on at boot in emulator
+on property:ro.kernel.qemu=1
+    start adbd
+
+on property:persist.service.adb.enable=1
+    start adbd
+
+on property:persist.service.adb.enable=0
+    stop adbd
+

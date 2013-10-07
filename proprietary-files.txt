@@ -1,3 +1,8 @@
+# Bin
+bin/mrvl_dut
+bin/powerdaemon
+
+
 # Graphics
 lib/egl/libEGL_MRVL.so
 lib/egl/libGLESv1_CM_MRVL.so
@@ -13,7 +18,7 @@ lib/hw/audio_path.vc.mrvl.so
 lib/hw/audio_path.voip.mrvl.so
 lib/hw/audio_path.vt.mrvl.so
 lib/hw/audio_policy.mrvl.so
-# TODO import alsa-lib from source
+# TODO import alsa-lib from source to compile libasound
 lib/libacoustic.so
 lib/libasound.so
 lib/libaudiodebugtool.so
@@ -23,9 +28,20 @@ lib/libsamsungRecord.so
 lib/libsamsungSoundbooster.so
 lib/lib_Samsung_Resampler.so
 
-
+# PowerDaemon
+lib/PowerDaemon/delegate_cpu.so
+lib/PowerDaemon/delegate_cpu.so
+lib/PowerDaemon/delegate_gpu.so
+lib/PowerDaemon/delegate_shcmd.so
+lib/PowerDaemon/plugin_android.so
+lib/PowerDaemon/plugin_camera.so
+lib/PowerDaemon/plugin_coda.so
+lib/PowerDaemon/plugin_input.so
+lib/PowerDaemon/plugin_thermal.so
 
 # Camera
+cameradata/datapattern_420sp.yuv
+cameradata/datapattern_front_420sp.yuv
 lib/hw/camera.mrvl.so
 lib/libcameraengine.so
 lib/libcodecjpegdec.so
@@ -54,7 +70,10 @@ lib/hw/csr.cpd.so
 #Shared Name 'csr.cpd.so'
 
 
-# Marvell Firmware
+# Marvell Firmware we will clean this up later hope Steve Kondik doesn't beat me 
+
+
+# Libs unknown
 
 
 # Display
@@ -63,6 +82,47 @@ lib/hw/gralloc.mrvl.so
 lib/hw/hwcomposer.mrvl.so
 lib/libHWComposerGC.so
 lib/libgcu.so
+
+# Drm
+lib/drm/libdrmwvmplugin.so
+#lib/drm/libdrmwvmplugin.id0
+#lib/drm/libdrmwvmplugin.id1
+#lib/drm/libdrmwvmplugin.nam
+lib/libWVStreamControlAPI_L3.so
+lib/libwvdrm_L3.so
+
+# Stock Charging for now implement open source later when I get this tab out of layaway :-P
+bin/lpmkey
+bin/playlpm
+lib/libQmageDecoder.so
+media/battery_batteryerror.qmg
+media/battery_charging_5.qmg
+media/battery_charging_10.qmg
+media/battery_charging_15.qmg
+media/battery_charging_20.qmg
+media/battery_charging_25.qmg
+media/battery_charging_30.qmg
+media/battery_charging_35.qmg
+media/battery_charging_40.qmg
+media/battery_charging_45.qmg
+media/battery_charging_50.qmg
+media/battery_charging_55.qmg
+media/battery_charging_60.qmg
+media/battery_charging_65.qmg
+media/battery_charging_70.qmg
+media/battery_charging_75.qmg
+media/battery_charging_80.qmg
+media/battery_charging_85.qmg
+media/battery_charging_90.qmg
+media/battery_charging_95.qmg
+media/battery_charging_100.qmg
+media/battery_error.qmg
+media/bootsamsung.qmg
+media/bootsamsungloop.qmg
+media/chargingwarning.qmg
+media/Disconnected.qmg
+media/video/shutdown/shutdown.qmg
+
 
 # NFC
 lib/hw/nfc.pxa988.so
