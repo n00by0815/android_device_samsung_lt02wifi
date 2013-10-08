@@ -83,6 +83,9 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun%d/
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/samsung/lt02wifi/configs/egl.cfg
 
+# Audio
+BOARD_USES_ALSA_AUDIO := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/lt02wifi/bluetooth
 
