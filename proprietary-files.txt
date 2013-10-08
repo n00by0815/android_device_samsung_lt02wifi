@@ -123,9 +123,3 @@ media/chargingwarning.qmg
 media/Disconnected.qmg
 media/video/shutdown/shutdown.qmg
 
-
-# NFC
-lib/hw/nfc.pxa988.so
-vendor/firmware/libpn547_fw.so
-vendor/firmware/libpn547_fw_eng.so
-vendor/firmware/libpn547_fw_platform.so
