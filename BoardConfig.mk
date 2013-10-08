@@ -13,14 +13,31 @@
 # limitations under the License.
 #
 
-
--include vendor/samsung/lt02wifi/BoardConfigVendor.mk
-
-TARGET_RECOVERY_FSTAB = device/samsung/lt02wifi/fstab.
-.
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/lt02wifi/bluetooth
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/lt02wifi/include
 
 TARGET_BOARD_PLATFORM := mrvl
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := PXA986
+# Not Yet
+#TARGET_BOARD_INFO_FILE := device/samsung/lt02wifi/board-info.txt
+
+# Kernel
+TARGET_KERNEL_SOURCE         := kernel/samsung/lt02wifi
+BOARD_KERNEL_CMDLINE         := 
+BOARD_KERNEL_BASE            := 0x10000000
+BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x11000000
+BOARD_KERNEL_PAGESIZE        := 2048
+TARGET_KERNEL_CONFIG         := cyanogen_lt02wifi_defconfig
+#TARGET_KERNEL_SELINUX_CONFIG := lt02selinux_defconfig
+
+# Recovery
+#TARGET_RECOVERY_PIXEL_FORMAT := 
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun0/file"
+BOARD_USES_MMCUTILS := true
+BOARD_HAS_NO_MISC_PARTITION := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_FSTAB := device/samsung/n80xx-common/fstab.pxa988
+RECOVERY_FSTAB_VERSION := 2
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -28,18 +45,33 @@ TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 12582912
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 12582912
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1507852288
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5775556608
-BOARD_FLASH_BLOCK_SIZE := 4096
+BOARD_FLASH_BLOCK_SIZE := 131072
 
-PAGE SIZE: 2048
-BASE ADDRESS: 0x10000000
-RAMDISK ADDRESS: 0x11000000
-CMDLINE: ''
+# Vold
+BOARD_VOLD_MAX_PARTITIONS := 17
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun%d/file"
 
+USE_OPENGL_RENDERER := true
+BOARD_EGL_CFG := device/samsung/lt02wifi/configs/egl.cfg
 
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/lt02wifi/bluetooth
 
+# SELinux
+#BOARD_SEPOLICY_DIRS += \
+#    device/samsung/lt02wifi/sepolicy
+
+#BOARD_SEPOLICY_UNION += \
+
+# inherit from the proprietary version
+-include vendor/samsung/lt02wifi/BoardConfigVendor.mk
