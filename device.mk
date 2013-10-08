@@ -88,10 +88,25 @@ PRODUCT_COPY_FILES += \
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_PACKAGES += \
+    libxml2 \
     setup_fs \
     hcitool \
     librs_jni \
     com.android.future.usb.accessory
+
+# PowerDaemon
+PRODUCT_PACKAGES += \
+    powerdaemon \
+    delegate_cpu \
+    delegate_ddr \
+    delegate_gpu \
+    delegate_shcmd \
+    plugin_android \
+    plugin_coda \
+    plugin_thermal \
+    plugin_input \
+    plugin_camera
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072
