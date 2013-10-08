@@ -29,20 +29,53 @@ PRODUCT_PACKAGES += \
     lpm.rc \
     ueventd.pxa988.rc
 
+# Wifi
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
+# GPS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sirfgps.conf:system/etc/sirfgps.conf
+
+# Prebuilt Keylayout
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+	$(LOCAL_PATH)/keylayout/88pm80x_on.kl:system/usr/keylayout/88pm80x_on.kl \
+	$(LOCAL_PATH)/keylayout/88pm800_hook_vol.kl:system/usr/keylayout/88pm800_hook_vol.kl \
+	$(LOCAL_PATH)/keylayout/pxa27x-keypad.kl:system/usr/keylayout/pxa27x-keypad.kl \
+	$(LOCAL_PATH)/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl\
+	$(LOCAL_PATH)/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
+	$(LOCAL_PATH)/keylayout/vnc-kbd.kl:system/usr/keylayout/vnc-kbd.kl
+
+# Prebuilt Keychars
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/keychars/vnc-kbd.kcm:system/usr/keychars/vnc-kbd.kcm \
+	$(LOCAL_PATH)/keychars/pxa27x-keypad.kcm:system/usr/keychars/pxa27x-keypad.kcm \
+
+# Prebuilt idc file
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/idc/elan-ts.idc:system/usr/idc/elan-ts.idc
+
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/etc/asound.conf:system/etc/asound.conf
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/asound.conf:system/etc/asound.conf \
+    $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
 
+# Audio
 PRODUCT_PACKAGES += \
     libasound \
     audio.a2dp.default \
     audio.usb.default
 
 
-# IR
+# Irda
 PRODUCT_PACKAGES += \
     irda.pxa988
+
+# Expose Irda feature
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/com.sec.feature.irda_service.xml:system/etc/permissions/com.sec.feature.irda_service.xml
 
 # Not Yet :(
 # Charger

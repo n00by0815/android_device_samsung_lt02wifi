@@ -27,11 +27,11 @@ BOARD_KERNEL_CMDLINE         :=
 BOARD_KERNEL_BASE            := 0x10000000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x11000000
 BOARD_KERNEL_PAGESIZE        := 2048
-TARGET_KERNEL_CONFIG         := cyanogen_lt02wifi_defconfig
+TARGET_KERNEL_CONFIG         := pxa986_lt02wifi_defconfig
 #TARGET_KERNEL_SELINUX_CONFIG := lt02selinux_defconfig
 
 # Recovery
-#TARGET_RECOVERY_PIXEL_FORMAT := 
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun0/file"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -86,14 +86,17 @@ BOARD_EGL_CFG := device/samsung/lt02wifi/configs/egl.cfg
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 
+# Webkit
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/lt02wifi/bluetooth
+BOARD_HAVE_BLUETOOTH_BCM := true
+USE_BLUETOOTH_SAP := false
 
 # SELinux
 #BOARD_SEPOLICY_DIRS += \
 #    device/samsung/lt02wifi/sepolicy
 
 #BOARD_SEPOLICY_UNION += \
-
-# inherit from the proprietary version
--include vendor/samsung/lt02wifi/BoardConfigVendor.mk
